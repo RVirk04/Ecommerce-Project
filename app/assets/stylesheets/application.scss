@@ -24,13 +24,17 @@
     -moz-box-sizing: border-box !important;
     box-sizing: border-box !important;
 } */
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "main";
 
 body {
   width: 100%;
   height: 100%;
   font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
   overflow-x: hidden;
-  background-color:white;
+  background-image: linear-gradient(to top, #93a5cf 0%, #e4efe9 100%);
 }
 
 html {
@@ -42,24 +46,24 @@ a:hover {
   text-decoration: none;
 }
 
-.navbar-brand {}
+// .navbar-brand {}
 
-.navbar-brand > img {
-  margin: auto 0 auto 15px !important;
-  padding: auto;
-}
+// .navbar-brand > img {
+//   margin: auto 0 auto 15px !important;
+//   padding: auto;
+// }
 
-.navbar-header {
-  margin-left: -4%!important;
-}
+// .navbar-header {
+//   margin-left: -4%!important;
+// }
 
-.navbar-left {
-  margin-left: 38.7px;
-}
+// .navbar-left {
+//   margin-left: 38.7px;
+// }
 
-.navbar-right {
-  margin-right: 21px;
-}
+// .navbar-right {
+//   margin-right: 21px;
+// }
 
 .navbar-inverse {
   border: none;

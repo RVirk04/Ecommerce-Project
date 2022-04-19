@@ -5,18 +5,24 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require "csv"
+require 'open-uri'
 
-User.create!(name:  'Example User',
-             email: 'example@railstutorial.org',
-             password:              'foobar',
-             password_confirmation: 'foobar',
+User.destroy_all
+Category.destroy_all
+Product.destroy_all
+
+User.create!(name:  'Sam Virk',
+             email: 'sam@virk.com',
+             password:              'password',
+             password_confirmation: 'password',
              admin:     true,
              activated: true,
              activated_at: Time.zone.now)
 
 7.times do |n|
   name  = Faker::Name.name
-  email = "example-#{n + 1}@railstutorial.org"
+  email = "virk#{n + 1}@virk.com"
   password = 'password'
   User.create!(name:  name,
                email: email,
@@ -33,21 +39,54 @@ User.create!(name:  'Example User',
   end
 end
 
-product1 = Product.create({:name=>"tomato", :price => 1})
-product2 = Product.create({:name=>"milk", :price => 3})
-product3 = Product.create({:name=>"bread", :price => 5.50})
-product4 = Product.create({:name=>"bacon", :price => 10})
-product5 = Product.create({:name=>"cheese", :price => 3.20})
-product6 = Product.create({:name=>"molohia", :price => 15.20})
+# Add file path of the csv file
+csv_category_file = Rails.root.join('db/categories.csv')
 
-puts "Total number of products: #{Product.all.count}"
-puts "Product names: #{Product.all.pluck("name")}"
-puts "Product1: #{product1.name} price: #{product1.price.round(2)}"
-puts "Product2: #{product2.name} price: #{product2.price.round(2)}"
-puts "Product3: #{product3.name} price: #{product3.price.round(2)}"
-puts "Product4: #{product4.name} price: #{product4.price.round(2)}"
-puts "Product5: #{product5.name} price: #{product5.price.round(2)}"
-puts "Product6: #{product6.name} price: #{product6.price.round(2)}"
+csv_category_data = File.read(csv_category_file)
+category = CSV.parse(csv_category_data, headers: true, encoding: 'iso-8859-1')
+
+category.each do |c|
+  category = Category.find_or_create_by(
+    id: c["id"],
+    name: c["category"]
+  )
+end
+
+# Add file path of the csv file
+csv_product_file = Rails.root.join('db/products.csv')
+
+csv_product_data = File.read(csv_product_file)
+product = CSV.parse(csv_product_data, headers: true, encoding: 'iso-8859-1')
+
+product.each do |p|
+    # Create a new player
+    product = Product.find_or_create_by(
+      id: p["id"],
+      name: p["name"],
+      description: p["details"],
+      price: p["price"],
+      category_id: p["category"]
+      # picture: URI.parse(p["picture"])
+    )
+end
+
+puts "Created #{Category.count} categories."
+puts "Created #{Product.count} products."
+# product1 = Product.create({:name=>"tomato", :price => 1})
+# product2 = Product.create({:name=>"milk", :price => 3})
+# product3 = Product.create({:name=>"bread", :price => 5.50})
+# product4 = Product.create({:name=>"bacon", :price => 10})
+# product5 = Product.create({:name=>"cheese", :price => 3.20})
+# product6 = Product.create({:name=>"molohia", :price => 15.20})
+
+# puts "Total number of products: #{Product.all.count}"
+# puts "Product names: #{Product.all.pluck("name")}"
+# puts "Product: #{product.name} price: #{product.price.round(2)}"
+# puts "Product2: #{product2.name} price: #{product2.price.round(2)}"
+# puts "Product3: #{product3.name} price: #{product3.price.round(2)}"
+# puts "Product4: #{product4.name} price: #{product4.price.round(2)}"
+# puts "Product5: #{product5.name} price: #{product5.price.round(2)}"
+# puts "Product6: #{product6.name} price: #{product6.price.round(2)}"
 
 # CART
 Cart.destroy_all

@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <!-- Carousel -->
-      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+      <div id="carousel-example-generic" class="homePageImage" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
           <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -15,20 +15,18 @@
             <%= image_tag("carousel1.jpg", :alt => "rss feed" , class: "img2") %>
             <!-- <img class="img2" src="/images/carousel1." alt="First slide"> -->
             <!-- Static Header -->
-            <div class="header-text hidden-xs">
+            <%# <div class="header-text hidden-xs">
               <div class="col-md-12 text-center">
                 <h2 style="color:white">
-                  <span><%= link_to image_tag("logo.png",size:"64x64" , alt: "Shop logo"), 'http://rubyonrails.org/' %>
                     Welcome to
-                    <strong>Dope Shop</strong>
+                    <strong>Virk</strong>
                   </span>
                 </h2>
                 <br>
-
                 <br>
                 <!-- <div class=""> <a class="btn btn-theme btn-sm btn-min-block" href="#">Login</a> <a class="btn btn-theme btn-sm btn-min-block" href="#">Register</a> </div> -->
               </div>
-            </div>
+            </div> %>
             <!-- /header-text -->
           </div>
           <div class="item">
@@ -54,7 +52,7 @@
             <div class="header-text hidden-xs">
               <div class="col-md-12 text-center">
                 <h2 style="color:white">
-                  <span>Start exploring</span>
+                  <span>Start Exploring</span>
                 </h2>
                 <br>
                 <br>
@@ -89,19 +87,5 @@
       </div>
     <%end %>
     <%# else %><% end %>
-    <% if !logged_in? %>
-      <div class="center jumbotron">
-        <!-- <h2> <%#= link_to image_tag("logo.png",size:"64x64" , alt: "Shop logo"), 'http://rubyonrails.org/' %> Welcome to dopeshop! </h2> -->
 
-        <% if !logged_in? %>
-          <%= link_to "Log in", login_path, class: "btn btn-lg btn-success" %>
-          <strong >
-            or
-          </strong>
-          <%= link_to "Sign up", signup_path, class: "btn btn-lg btn-primary" %>
-        <% end %>
-      </div>
-    <%end %>
-
-    <%= render 'shared/products' %>
-    <%# end %>
+  

@@ -1,85 +1,91 @@
-<li>
+<p style="color: green"><%= notice %></p>
+<div id="products">
+  <div class="container">
+    <div class="row">
+      <% @products.each do |product| %>
+        <div class="col-md-4 col-sm-6">
+          <div class="grid product-grid2">
+            <!-- Product Image -->
+            <%= link_to product do%>
+              <% if product.picture? %>
+                <div class="product-image2">
+                  <%= image_tag(product.picture.url, class:"pic-1") %>
+                </div>
+              <% else %>
+                <%= image_tag "no_image.png", size:"150x150" %>
+              <%end%>
+            <%end %>
+            <%# <ul class="social">
+              <li><a href="#" data-tip="Quick View"><i class="fa fa-eye"></i></a></li> %>
+              <%# <li><a href="#" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li> %>
+              <%# <li> %>
+                <%# link_to line_items_path(product_id: @product) do %>
+                  <%# <i class="fa fa-shopping-cart"></i> %>
+                <%# end %>
+              <%# </li> %>
+            <%# </ul> %>
+            <p>
+              <%if !@current_cart.products.include?(product)%>
+                <%# if logged_in? %>
+                  <!-- Add to Basket -->
+                  <%=button_to line_items_path(:product_id => product.id), class: "btn btn-warning" , style: "margin-top:15px;" , params:{productID: product.id} do %>
+                    <i class="glyphicon glyphicon-plus" style="color:black;"></i>
+                    Add to Basket
+                  <% end %>
+                <%# end %>
+              <%else %>
+                <!-- See lineItem section below for explanation of line_item links -->
 
-  <%= link_to product do%>
-  <% if product.picture? %>
-    <%= image_tag product.picture.url %>
-  <% else %>
-    <%= image_tag "no_image.png", size:"150x150" %>
-  <%end%>
-<%end %>
+                <!-- <li> -->
+                <!-- <%#= link_to "Add one", line_item_add_path(:id => line_item), method: :post %> -->
 
-<strong>
-  Name2 :
-</strong>
-<%= product.name %>
-,<strong>
-  Description :
-</strong>
-<%= product.description %>
-<strong>
-  Price :
-</strong>
-<%= product.price %>
-$
+                <!-- reduce -->
+                <%=link_to line_item_reduce_path(:id =>@current_cart.line_items.find_by(product_id: product.id)) , method: :post, class: "btn btn-danger" , style: "margin-top:15px;" do %>
+                  <i class="glyphicon glyphicon-minus" style="color:black;"></i>
+                  Reduce
+                <% end %>
 
-<p>
+                <!-- add -->
+                <%=link_to line_item_add_path(:id => @current_cart.line_items.find_by(product_id: product.id)) , method: :post , class: "btn btn-success" , style: "margin-top:15px;" do %>
+                  <i class="glyphicon glyphicon-plus" style="color:black;"></i>
+                  Add
+                <% end %>
 
-  <%if !@current_cart.products.include?(product)%>
-    <%# if logged_in? %>
-      <!-- Add to Basket -->
-      <%=button_to line_items_path(:product_id => product.id), class: "btn btn-warning" , style: "margin-top:15px;" , params:{productID: product.id} do %>
-      <i class="glyphicon glyphicon-plus" style="color:black;"></i>
-      Add to Basket
-    <% end %>
-    <%# end %>
-    <%else %>
-      <!-- See lineItem section below for explanation of line_item links -->
+                <!-- Remove -->
+                <%=link_to line_item_path(@current_cart.line_items.find_by(product_id: product.id)) ,method: :delete ,class: "btn btn-warning" , style: "margin-top:15px;" do %>
+                  <i class="glyphicon glyphicon-remove" style="color:black;"></i>
+                  Remove Item
+                <% end %>
 
-      <!-- <li> -->
-      <!-- <%#= link_to "Add one", line_item_add_path(:id => line_item), method: :post %> -->
-
-      <!-- reduce -->
-      <%=link_to line_item_reduce_path(:id =>@current_cart.line_items.find_by(product_id: product.id)) , method: :post, class: "btn btn-danger" , style: "margin-top:15px;" do %>
-      <i class="glyphicon glyphicon-minus" style="color:black;"></i>
-      Reduce
-    <% end %>
-
-    <!-- add -->
-    <%=link_to line_item_add_path(:id => @current_cart.line_items.find_by(product_id: product.id)) , method: :post , class: "btn btn-success" , style: "margin-top:15px;" do %>
-    <i class="glyphicon glyphicon-plus" style="color:black;"></i>
-    Add
-  <% end %>
-
-  <!-- Remove -->
-  <%=link_to line_item_path(@current_cart.line_items.find_by(product_id: product.id)) ,method: :delete ,class: "btn btn-warning" , style: "margin-top:15px;" do %>
-  <i class="glyphicon glyphicon-remove" style="color:black;"></i>
-  Remove Item
-<% end %>
-
-<li>
-  Quantity:
-  <%= @current_cart.line_items.find_by(product_id: product.id).quantity %>
-  | Total Price:
-  <%= number_to_currency(@current_cart.line_items.find_by(product_id: product.id).total_price) %>
-
-</li>
-<%end %>
-</p>
-
-<p>
-
-<!-- Only Admin is allowed to modify products -->
-<% if logged_in? && current_user.admin? %>
-<%= link_to edit_product_path(product) do %>
-<i class="glyphicon glyphicon-pencil" style="color:darkgray"></i>
-Edit
-<% end %>
-or
-<!-- Basket -->
-<%= link_to product, method: :delete, data: { confirm: 'Are you sure?' } do %>
-<i class="glyphicon glyphicon-fire" style="color:firebrick"></i>
-Destroy
-<% end %>
-<% end %>
-</p>
-</li>
+                <li>
+                  Quantity:
+                  <%= @current_cart.line_items.find_by(product_id: product.id).quantity %>
+                  | Total Price:
+                  <%= number_to_currency(@current_cart.line_items.find_by(product_id: product.id).total_price) %>
+                </li>
+              <%end %>
+            </p>
+            <div class="product-content">
+              <h3 class="title"><a href="#"><%= link_to product.name, product %></a></h3> <span class="price"><%= link_to "$#{product.price}", product %></a></span>
+            </div>
+            <p>
+              <!-- Only Admin is allowed to modify products -->
+              <% if logged_in? && current_user.admin? %>
+                <%= link_to edit_product_path(product) do %>
+                  <i class="glyphicon glyphicon-pencil" style="color:darkgray"></i>
+                  Edit
+                <% end %>
+                or
+                <!-- Basket -->
+                <%= link_to product, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <i class="glyphicon glyphicon-fire" style="color:firebrick"></i>
+                  Destroy
+                <% end %>
+              <% end %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

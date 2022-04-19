@@ -1,100 +1,144 @@
-<nav class="navbar  navbar-inverse">
-  <div class="container-fluid">
-    <!-- FOOTER START================== -->
-    <footer class="footer">
-      <div class="container">
+<!-- Footer -->
+<footer class="footer navbar-inverse text-muted text-center">
+  <!-- Section: Social media -->
+  <section
+    class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+  >
+    <!-- Left -->
+    <div class="me-5 d-none d-lg-block">
+      <span>Get connected with us on social networks:</span>
+    </div>
+    <!-- Left -->
 
-        <%= render "/layouts/reviews" %>
+    <!-- Right -->
+    <div>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
 
-        <hr class="style15">
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>VIRK
+          </h6>
+          <p>
+            Virk Shop is a global online fashion retailer offering thousands of styles across menswear
+            so that you can stay ahead of the trends. Shop from our range of items including t-shirts, jeans,
+            knitwear, sweats, coats and accessories; if you want it, we're pretty sure we've got it! With loads of
+            styles landing each week and regular trend updates you can be sure to get the latest. #weareVirk.
+          </p>
+        </div>
+        <!-- Grid column -->
 
-        <div class="row">
-          <div class="col-sm-3">
-            <h4 class="title">About us</h4>
-            <p>With 5 years market experience we are here to give you the best products on the best price .</p>
-            <!-- <ul class="social-icon"> <a href="#" class="social"><i class="fa fa-facebook" aria-hidden="true"></i></a> <a href="#" class="social"><i class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#" class="social"><i class="fa fa-instagram"
-            aria-hidden="true"></i></a> <a href="#" class="social"><i class="fa fa-youtube-play" aria-hidden="true"></i></a> <a href="#" class="social"><i class="fa fa-google" aria-hidden="true"></i></a> <a href="#" class="social"><i class="fa fa-dribbble"
-            aria-hidden="true"></i></a> </ul> -->
-          </div>
-          <div class="col-sm-3">
-            <h4 class="title">My Account</h4>
-            <span class="acount-icon">
-              <%= link_to orders_path do %>
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Products
+          </h6>
+          <p>
+            <%= link_to "Men", men_path, class:"text-reset" %>
+          </p>
+          <p>
+            <%= link_to "Women", women_path, class:"text-reset" %>
+          </p>
+          <p>
+            <%= link_to "Kids", kids_path, class:"text-reset" %>
+          </p>
+          <p>
+            <%= link_to "Accessories", accessories_path, class:"text-reset" %>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Useful links
+          </h6>
+          <p>
+            <%= link_to current_user do %>
+              <i class="fa fa-user" aria-hidden="true"></i>
+              Account
+            <% end %>
+          </p>
+          <p>
+            <%= link_to cart_path(@current_cart) do %>
+              <i class="fa fa-cart-plus" aria-hidden="true"></i>
+              Cart
+            <% end %>
+          </p>
+          <p>
+            <%= link_to orders_path do %>
               <i class="fa fa-heart" aria-hidden="true"></i>
               Orders
             <% end %>
-            <%= link_to cart_path(@current_cart) do %>
-            <i class="fa fa-cart-plus" aria-hidden="true"></i>
-            Cart
+          </p>
+          <%= link_to users_path do %>
+            <i class="fa fa-users" aria-hidden="true"></i>
+            Users
           <% end %>
-          <%= link_to current_user do %>
-          <i class="fa fa-user" aria-hidden="true"></i>
-          Profile
-        <% end %>
-        <%= link_to users_path do %>
-        <i class="fa fa-users" aria-hidden="true"></i>
-        Users
-      <% end %>
-      <!-- <a href="#"> <i class="fa fa-globe" aria-hidden="true"></i> Language</a> -->
-    </span>
-  </div>
-  <div class="col-sm-3">
-    <h4 class="title">Category</h4>
-    <div class="category">
-      <a href="#">Men</a>
-      <a href="#">Women</a>
-      <a href="#">Boy</a>
-      <a href="#">Girl</a>
-      <a href="#">Bag</a>
-      <a href="#">Toys</a>
-      <a href="#">Hair Accessories</a>
-      <a href="#">Shoes</a>
-      <a href="#">Glasses</a>
-      <a href="#">Baby clothes</a>
+          <p>
+            <a href="#!" class="text-reset">About</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Help</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Contact
+          </h6>
+          <p><i class="fas fa-home me-3"></i> Winnipeg, MB R3C 1J8, CA</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            virk@gmail.com.com
+          </p>
+          <p><i class="fas fa-phone me-3"></i> + 01 204 333 0000</p>
+          <p><i class="fas fa-print me-3"></i> + 01 431 778 4123</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
     </div>
-  </div>
-  <div class="col-sm-3">
-    <h4 class="title">Payment Methods</h4>
-    <p>You can pay using...</p>
-    <ul class="payment">
-      <li>
-        <a href="#">
-          <i class="fa fa-cc-amex" aria-hidden="true"></i>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="fa fa-credit-card" aria-hidden="true"></i>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="fa fa-paypal" aria-hidden="true"></i>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="fa fa-cc-visa" aria-hidden="true"></i>
-        </a>
-      </li>
-    </ul>
-  </div>
-</div>
-<hr class="style18">
+  </section>
+  <!-- Section: Links  -->
 
-<div class="row text-center">
-  ©
-  <%= Date.today.year %>
-  .
-  <a href="http://www.goxr3plus.co.nf" target="_blank">GOXR3PLUS Studio
-  </a>
-</div>
-</div>
-
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © <%= Date.current.year %> Copyright:
+    <%= link_to "VIRK", root_path, class:"text-reset fw-bold" %> - All rights reserved
+  </div>
+  <!-- Copyright -->
 </footer>
-
-</div>
-</div>
-
-</div>
-</nav>
+<!-- Footer -->

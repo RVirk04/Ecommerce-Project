@@ -1,11 +1,19 @@
 class ProductPictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
-  process resize_to_limit: [150, 150]
 
   if Rails.env.production?
     storage :fog
   else
     storage :file
+  end
+
+  # Create different versions of your uploaded files:
+  version :thumb do
+    process resize_to_fit: [300, 300]
+  end
+
+  version :default do
+    process resize_to_fit: [300, 300]
   end
 
   # Override the directory where uploaded files will be stored.

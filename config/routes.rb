@@ -2,12 +2,19 @@
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 Rails.application.routes.draw do
+  resources :provinces
+  resources :categories
   get 'password_resets/new'
   get 'password_resets/edit'
   root 'static_pages#home'
   get  '/help', to: 'static_pages#help', as: 'helf'
   get  '/about',   to: 'static_pages#about'
   get  '/contact', to: 'static_pages#contact'
+  get '/newin', to: 'static_pages#newin'
+  get '/men', to: 'static_pages#men'
+  get '/women', to: 'static_pages#women'
+  get '/kids', to: 'static_pages#kids'
+  get '/accessories', to: 'static_pages#accessories'
   get  '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
   get '/login', to: 'sessions#new'
