@@ -23,11 +23,10 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    # byebug
   end
 
   def create
-    @user = User.new(user_params) # Not the final implementation!
+    @user = User.new(user_params)
     if @user.save
       notify_user
       flash[:info] = generate_activation_message.html_safe
@@ -81,11 +80,8 @@ class UsersController < ApplicationController
   end
 
   def notify_user
-    # Handle a successful save. massalel
     @user.send_activation_email
     UserMailer.account_activation(@user).deliver_now
-    # "Order created - Click <a href='https://www.google.com'>here</a>
-    # to pay for it!".html_safe
   end
 
   # Before filters

@@ -7,7 +7,7 @@ class="form-control" type="text"/> </div> <button type="submit" class="btn btn-p
 
 <div>
   <h1 class="header_content">
-    <% if params[:search].blank?%>
+    <% if params[:search].blank? || params[:search_category].blank? %>
       Products (<%= @products.count %>)
     <%else %>
       Found => [

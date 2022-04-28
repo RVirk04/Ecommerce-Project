@@ -20,7 +20,8 @@
     <!-- Search Bar -->
     <%= form_tag(newin_path, :method => "get", id: "search-form", class:"navbar-form navbar-left") do %>
       <div class="input-group" id="adv-search">
-        <%= text_field_tag :search, params[:search], placeholder: "Search..." , class: "form-control" %>
+        <%= text_field_tag :keyword, params[:keyword], placeholder: "Search..." , class: "form-control" %>
+        <%= select_tag :search_category, options_from_collection_for_select(Category.all, "id", "name"), :include_blank => 'All', class: "form dropdown-toggle" %>
         <div class="input-group-btn">
           <%= button_tag(type: 'submit', class: "btn btn-default") do %>
             <span class="glyphicon glyphicon-search"></span>

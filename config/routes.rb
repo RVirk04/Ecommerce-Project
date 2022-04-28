@@ -3,6 +3,7 @@
 
 Rails.application.routes.draw do
   resources :provinces
+  resources :addresses
   resources :categories
   get 'password_resets/new'
   get 'password_resets/edit'

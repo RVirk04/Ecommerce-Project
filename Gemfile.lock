@@ -114,6 +114,12 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.10)
+    countries (5.0.0)
+      i18n_data (~> 0.16.0)
+      sixarm_ruby_unaccent (~> 1.1)
+    country_select (7.0.0)
+      countries (~> 5.0)
+      sort_alphabetical (~> 1.1)
     crass (1.0.6)
     devise (4.8.1)
       bcrypt (~> 3.0)
@@ -178,6 +184,8 @@ GEM
     http_parser.rb (0.8.0)
     i18n (1.10.0)
       concurrent-ruby (~> 1.0)
+    i18n_data (0.16.0)
+      simple_po_parser (~> 1.1)
     image_processing (1.12.2)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
@@ -291,6 +299,10 @@ GEM
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
     rake (13.0.6)
+    ransack (3.1.0)
+      activerecord (>= 6.0.4)
+      activesupport (>= 6.0.4)
+      i18n
     rb-fsevent (0.11.1)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -343,6 +355,10 @@ GEM
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
+    simple_po_parser (1.1.6)
+    sixarm_ruby_unaccent (1.2.0)
+    sort_alphabetical (1.1.0)
+      unicode_utils (>= 1.2.2)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -375,6 +391,7 @@ GEM
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (2.1.0)
+    unicode_utils (1.4.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.0)
@@ -411,6 +428,7 @@ DEPENDENCIES
   capybara
   carrierwave (~> 2.2, >= 2.2.2)
   coffee-rails (~> 5.0)
+  country_select
   devise (~> 4.8, >= 4.8.1)
   email_validator
   faker (~> 1.8, >= 1.8.7)
@@ -433,6 +451,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.2, >= 7.0.2.3)
   rails-controller-testing
+  ransack
   rubocop
   rubocop-rails
   sass-rails (>= 3.2)

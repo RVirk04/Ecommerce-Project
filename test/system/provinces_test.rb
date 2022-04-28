@@ -18,6 +18,7 @@ class ProvincesTest < ApplicationSystemTestCase
     fill_in "Hst", with: @province.hst
     fill_in "Name", with: @province.name
     fill_in "Pst", with: @province.pst
+    fill_in "User", with: @province.user_id
     click_on "Create Province"
 
     assert_text "Province was successfully created"
@@ -32,6 +33,7 @@ class ProvincesTest < ApplicationSystemTestCase
     fill_in "Hst", with: @province.hst
     fill_in "Name", with: @province.name
     fill_in "Pst", with: @province.pst
+    fill_in "User", with: @province.user_id
     click_on "Update Province"
 
     assert_text "Province was successfully updated"

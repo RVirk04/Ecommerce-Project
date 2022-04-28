@@ -1,5 +1,5 @@
 class ProvincesController < ApplicationController
-  before_action :set_province, only: %i[ show edit update destroy ]
+  before_action :set_province, only: %i[show edit update destroy]
 
   # GET /provinces or /provinces.json
   def index
@@ -7,8 +7,7 @@ class ProvincesController < ApplicationController
   end
 
   # GET /provinces/1 or /provinces/1.json
-  def show
-  end
+  def show; end
 
   # GET /provinces/new
   def new
@@ -16,8 +15,7 @@ class ProvincesController < ApplicationController
   end
 
   # GET /provinces/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /provinces or /provinces.json
   def create
@@ -58,13 +56,14 @@ class ProvincesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_province
-      @province = Province.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def province_params
-      params.require(:province).permit(:name, :gst, :pst, :hst)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_province
+    @province = Province.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def province_params
+    params.require(:province).permit(:name, :gst, :pst, :hst, :user_id)
+  end
 end

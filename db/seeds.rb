@@ -11,6 +11,7 @@ require 'open-uri'
 User.destroy_all
 Category.destroy_all
 Product.destroy_all
+Province.destroy_all
 
 User.create!(name:  'Sam Virk',
              email: 'sam@virk.com',
@@ -59,19 +60,37 @@ csv_product_data = File.read(csv_product_file)
 product = CSV.parse(csv_product_data, headers: true, encoding: 'iso-8859-1')
 
 product.each do |p|
-    # Create a new player
-    product = Product.find_or_create_by(
-      id: p["id"],
-      name: p["name"],
-      description: p["details"],
-      price: p["price"],
-      category_id: p["category"]
-      # picture: URI.parse(p["picture"])
-    )
+  # Create a new player
+  product = Product.find_or_create_by(
+    id: p["id"],
+    name: p["name"],
+    description: p["details"],
+    price: p["price"],
+    category_id: p["category"]
+    # picture: URI.parse(p["picture"])
+  )
+end
+
+# Add file path of the csv file
+csv_provinces_file = Rails.root.join('db/provinces.csv')
+
+csv_provinces_data = File.read(csv_provinces_file)
+province = CSV.parse(csv_provinces_data, headers: true, encoding: 'iso-8859-1')
+
+province.each do |t|
+  # Create a new player
+  province = Province.find_or_create_by(
+    id: t["id"],
+    name: t["province"],
+    gst: t["gst"],
+    pst: t["pst"],
+    hst: t["hst"]
+  )
 end
 
 puts "Created #{Category.count} categories."
 puts "Created #{Product.count} products."
+puts "Created #{Province.count} provinces with taxes."
 # product1 = Product.create({:name=>"tomato", :price => 1})
 # product2 = Product.create({:name=>"milk", :price => 3})
 # product3 = Product.create({:name=>"bread", :price => 5.50})

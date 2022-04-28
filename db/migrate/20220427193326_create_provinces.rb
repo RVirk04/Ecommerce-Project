@@ -5,6 +5,7 @@ class CreateProvinces < ActiveRecord::Migration[7.0]
       t.decimal :gst
       t.decimal :pst
       t.decimal :hst
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end
