@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_220_427_192_532) do
+ActiveRecord::Schema[7.0].define(version: 20_220_427_193_326) do
   create_table "addresses", force: :cascade do |t|
     t.string "address1"
     t.string "address2"
@@ -75,8 +75,10 @@ ActiveRecord::Schema[7.0].define(version: 20_220_427_192_532) do
     t.decimal "gst"
     t.decimal "pst"
     t.decimal "hst"
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_provinces_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -102,13 +104,11 @@ ActiveRecord::Schema[7.0].define(version: 20_220_427_192_532) do
     t.datetime "activated_at", precision: nil
     t.string "reset_digest"
     t.datetime "reset_sent_at", precision: nil
-    t.integer "province_id", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["province_id"], name: "index_users_on_province_id"
   end
 
   add_foreign_key "addresses", "users"
   add_foreign_key "microposts", "users"
   add_foreign_key "products", "categories"
-  add_foreign_key "users", "provinces"
+  add_foreign_key "provinces", "users"
 end
